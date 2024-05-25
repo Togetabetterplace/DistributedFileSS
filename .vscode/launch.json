@@ -1,0 +1,62 @@
+// {
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "name": "Launch DistributedProject",
+//             "type": "cppdbg",
+//             "request": "launch",
+//             "program": "${workspaceFolder}/build/DistributedProject",
+//             "args": [],
+//             "stopAtEntry": false,
+//             "cwd": "${workspaceFolder}",
+//             "environment": [],
+//             "externalConsole": false,
+//             "MIMode": "gdb",
+//             "setupCommands": [
+//                 {
+//                     "description": "Enable pretty-printing for gdb",
+//                     "text": "-enable-pretty-printing",
+//                     "ignoreFailures": true
+//                 }
+//             ],
+//             "preLaunchTask": "build",
+//             "miDebuggerPath": "D:/Qt/Tools/mingw1120_64/bin/gdb.exe",
+//             "internalConsoleOptions": "openOnSessionStart"
+//         }
+//     ]
+// }
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run DistributedProject",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/DFSS.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build",
+            "miDebuggerPath": "D:/Qt/Tools/mingw1120_64/bin/gdb.exe",
+            // "setupCommands": [
+            //     {
+            //         "description": "Enable pretty-printing for gdb",
+            //         "text": "-enable-pretty-printing",
+            //         "ignoreFailures": true
+            //     }
+            // ],
+            "miDebuggerArgs": "",
+            "stopAtConnect": false
+        }
+    ]
+}

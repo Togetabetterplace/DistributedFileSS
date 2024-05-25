@@ -1,0 +1,3 @@
+project(CMake-DFSS)
+
+add_executable(DFSS "src/main.cpp" "src/DataSource.h" "src/Peer.cpp","src/threadPool.cpp",")

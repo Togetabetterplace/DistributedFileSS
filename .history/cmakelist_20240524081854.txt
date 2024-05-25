@@ -1,0 +1,5 @@
+project(CMake-DFSS)
+
+add_executable(DFSS "src/main.cpp" "src/DataSource.h" "src/Peer.cpp","src/threadPool.cpp","src/threadPool.h",
+"lib/imgui/imgui.h","lib/imgui/backends/imgui_impl_glfw.h","lib/imgui/backends/imgui_impl_glfw.cpp",
+"lib/imgui/backends/imgui_impl_opengl3.h",)

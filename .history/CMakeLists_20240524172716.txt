@@ -1,0 +1,67 @@
+# # project(CMake-DFSS)
+
+# # add_executable(DFSS
+# #     "src/main.cpp"
+# #     "src/DataSource.h"
+# #     "src/Peer.cpp"
+# #     "src/threadPool.cpp"
+# #     "src/threadPool.h"
+# #     "lib/imgui.h"
+# #     "lib/imgui.cpp"
+# #     "lib/imgui_impl_glfw.h"
+# #     "lib/imgui_impl_glfw.cpp"
+# #     "lib/imgui_impl_opengl3.h"
+# #     "lib/imgui_impl_opengl3.cpp"
+# #     # "lib/glfw3.h"
+# # )
+
+# cmake_minimum_required(VERSION 3.10)
+# project(CMake-DFSS)
+
+# set(CMAKE_CXX_STANDARD 11)
+
+# # 设置头文件目录
+# include_directories(lib/glfw/include/GLFW)
+# include_directories(lib/imgui)
+# include_directories(lib/src)
+
+# # 设置库文件目录
+# link_directories(lib/glfw/lib)
+
+# # 创建可执行文件
+# add_executable(DFSS
+#     "src/main.cpp"
+#     "src/Peer.cpp"
+#     "src/ThreadPool.cpp"
+#     "lib/imgui.cpp"
+#     "lib/imgui_demo.cpp"
+#     "lib/imgui_draw.cpp"
+#     "lib/imgui_tables.cpp"
+#     "lib/imgui_widgets.cpp"
+#     "lib/imgui_impl_glfw.cpp"
+#     "lib/imgui_impl_opengl3.cpp"
+# )
+
+# # 链接库文件
+# target_link_libraries(DFSS glfw GL dl pthread)
+
+
+cmake_minimum_required(VERSION 3.10)
+project(CMake-DFSS)
+
+set(CMAKE_CXX_STANDARD 11)
+
+# 设置头文件目录
+include_directories(lib/glfw/include)
+include_directories(lib/imgui)
+
+# 假设您的源文件都在src/目录下
+file(GLOB SOURCES "src/*.cpp")
+
+# 创建可执行文件
+add_executable(DFSS ${SOURCES})
+
+# 链接库文件
+find_package(glfw3 REQUIRED)
+find_package(OpenGL REQUIRED)
+target_link_libraries(DFSS glfw OpenGL::GL dl pthread)

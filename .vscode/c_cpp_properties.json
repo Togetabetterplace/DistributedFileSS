@@ -1,0 +1,30 @@
+
+{
+    "configurations": [
+        {
+            "name": "MyGDB",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/src/**",
+                "${workspaceFolder}/lib/**",
+                "${workspaceFolder}/lib/glfw/include"
+            ],
+            "defines": [],
+            "compilerPath": "D:/Qt/Tools/mingw1120_64/bin/g++.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/**",
+                    "${workspaceFolder}/src/**",
+                    "${workspaceFolder}/lib/**",
+                    "${workspaceFolder}/lib/glfw/include"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
+        }
+    ],
+    "version": 4
+}

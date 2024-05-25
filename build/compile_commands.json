@@ -1,0 +1,52 @@
+[
+{
+  "directory": "E:/Project/Distributed/DistributedFileSS/build",
+  "command": "D:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe  @CMakeFiles/DFSS.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\DFSS.dir\\src\\main.cpp.obj -c E:\\Project\\Distributed\\DistributedFileSS\\src\\main.cpp",
+  "file": "E:/Project/Distributed/DistributedFileSS/src/main.cpp"
+},
+{
+  "directory": "E:/Project/Distributed/DistributedFileSS/build",
+  "command": "D:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe  @CMakeFiles/DFSS.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\DFSS.dir\\src\\Peer.cpp.obj -c E:\\Project\\Distributed\\DistributedFileSS\\src\\Peer.cpp",
+  "file": "E:/Project/Distributed/DistributedFileSS/src/Peer.cpp"
+},
+{
+  "directory": "E:/Project/Distributed/DistributedFileSS/build",
+  "command": "D:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe  @CMakeFiles/DFSS.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\DFSS.dir\\src\\threadPool.cpp.obj -c E:\\Project\\Distributed\\DistributedFileSS\\src\\threadPool.cpp",
+  "file": "E:/Project/Distributed/DistributedFileSS/src/threadPool.cpp"
+},
+{
+  "directory": "E:/Project/Distributed/DistributedFileSS/build",
+  "command": "D:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe  @CMakeFiles/DFSS.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\DFSS.dir\\src\\imgui.cpp.obj -c E:\\Project\\Distributed\\DistributedFileSS\\src\\imgui.cpp",
+  "file": "E:/Project/Distributed/DistributedFileSS/src/imgui.cpp"
+},
+{
+  "directory": "E:/Project/Distributed/DistributedFileSS/build",
+  "command": "D:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe  @CMakeFiles/DFSS.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\DFSS.dir\\src\\imgui_demo.cpp.obj -c E:\\Project\\Distributed\\DistributedFileSS\\src\\imgui_demo.cpp",
+  "file": "E:/Project/Distributed/DistributedFileSS/src/imgui_demo.cpp"
+},
+{
+  "directory": "E:/Project/Distributed/DistributedFileSS/build",
+  "command": "D:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe  @CMakeFiles/DFSS.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\DFSS.dir\\src\\imgui_draw.cpp.obj -c E:\\Project\\Distributed\\DistributedFileSS\\src\\imgui_draw.cpp",
+  "file": "E:/Project/Distributed/DistributedFileSS/src/imgui_draw.cpp"
+},
+{
+  "directory": "E:/Project/Distributed/DistributedFileSS/build",
+  "command": "D:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe  @CMakeFiles/DFSS.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\DFSS.dir\\src\\imgui_impl_glfw.cpp.obj -c E:\\Project\\Distributed\\DistributedFileSS\\src\\imgui_impl_glfw.cpp",
+  "file": "E:/Project/Distributed/DistributedFileSS/src/imgui_impl_glfw.cpp"
+},
+{
+  "directory": "E:/Project/Distributed/DistributedFileSS/build",
+  "command": "D:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe  @CMakeFiles/DFSS.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\DFSS.dir\\src\\imgui_impl_opengl3.cpp.obj -c E:\\Project\\Distributed\\DistributedFileSS\\src\\imgui_impl_opengl3.cpp",
+  "file": "E:/Project/Distributed/DistributedFileSS/src/imgui_impl_opengl3.cpp"
+},
+{
+  "directory": "E:/Project/Distributed/DistributedFileSS/build",
+  "command": "D:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe  @CMakeFiles/DFSS.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\DFSS.dir\\src\\imgui_tables.cpp.obj -c E:\\Project\\Distributed\\DistributedFileSS\\src\\imgui_tables.cpp",
+  "file": "E:/Project/Distributed/DistributedFileSS/src/imgui_tables.cpp"
+},
+{
+  "directory": "E:/Project/Distributed/DistributedFileSS/build",
+  "command": "D:\\Qt\\Tools\\mingw1120_64\\bin\\g++.exe  @CMakeFiles/DFSS.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\DFSS.dir\\src\\imgui_widgets.cpp.obj -c E:\\Project\\Distributed\\DistributedFileSS\\src\\imgui_widgets.cpp",
+  "file": "E:/Project/Distributed/DistributedFileSS/src/imgui_widgets.cpp"
+}
+]

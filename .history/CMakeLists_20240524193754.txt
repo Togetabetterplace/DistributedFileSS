@@ -1,0 +1,118 @@
+# # project(CMake-DFSS)
+
+# # add_executable(DFSS
+# #     "src/main.cpp"
+# #     "src/DataSource.h"
+# #     "src/Peer.cpp"
+# #     "src/threadPool.cpp"
+# #     "src/threadPool.h"
+# #     "lib/imgui.h"
+# #     "lib/imgui.cpp"
+# #     "lib/imgui_impl_glfw.h"
+# #     "lib/imgui_impl_glfw.cpp"
+# #     "lib/imgui_impl_opengl3.h"
+# #     "lib/imgui_impl_opengl3.cpp"
+# #     # "lib/glfw3.h"
+# # )
+
+# cmake_minimum_required(VERSION 3.10)
+# project(CMake-DFSS)
+
+# set(CMAKE_CXX_STANDARD 11)
+
+# # 设置头文件目录
+# include_directories(lib/glfw/include/GLFW)
+# include_directories(lib/imgui)
+# include_directories(lib/src)
+
+# # 设置库文件目录
+# link_directories(lib/glfw/lib)
+
+# # 创建可执行文件
+# add_executable(DFSS
+#     "src/main.cpp"
+#     "src/Peer.cpp"
+#     "src/ThreadPool.cpp"
+#     "lib/imgui.cpp"
+#     "lib/imgui_demo.cpp"
+#     "lib/imgui_draw.cpp"
+#     "lib/imgui_tables.cpp"
+#     "lib/imgui_widgets.cpp"
+#     "lib/imgui_impl_glfw.cpp"
+#     "lib/imgui_impl_opengl3.cpp"
+# )
+
+# # 链接库文件
+# target_link_libraries(DFSS glfw GL dl pthread)
+
+
+# cmake_minimum_required(VERSION 3.10)
+# project(CMake-DFSS)
+
+# set(CMAKE_CXX_STANDARD 11)
+
+# # 设置头文件目录
+# include_directories(lib/glfw/include)
+# include_directories(lib/imgui)
+
+# # 假设您的源文件都在src/目录下
+# file(GLOB SOURCES "src/*.cpp")
+
+# # 创建可执行文件
+# add_executable(DFSS ${SOURCES})
+
+# # 链接库文件
+# find_package("E:\\Project\\Distributed\\DistributedFileSS\\lib\\glfw\\lib\\libglfw3.a")
+# find_package(OpenGL REQUIRED)
+# target_link_libraries(DFSS glfw OpenGL::GL dl pthread)
+
+cmake_minimum_required(VERSION 3.10)
+project(CMake-DFSS)
+
+set(CMAKE_CXX_STANDARD 11)
+
+# 设置头文件目录
+include_directories(${CMAKE_SOURCE_DIR}/lib/glfw/include)
+include_directories(${CMAKE_SOURCE_DIR}/lib)
+
+# 设置库文件目录
+link_directories(${CMAKE_SOURCE_DIR}/lib/glfw/lib)
+
+# 创建可执行文件
+add_executable(DFSS
+    "src/main.cpp"
+    "src/Peer.cpp"
+    "src/threadPool.cpp"
+    "src/imgui.cpp"
+    "src/imgui_demo.cpp"
+    "src/imgui_draw.cpp"
+    "src/imgui_tables.cpp"
+    "src/imgui_widgets.cpp"
+    "src/imgui_impl_glfw.cpp"
+    "src/imgui_impl_opengl3.cpp"
+)
+
+# 添加项目源文件
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+
+# 指定头文件搜索路径
+include_directories(
+    "E:/Project/Distributed/DistributedFileSS/lib/glfw/include" # GLFW 头文件路径
+    "E:/Project/Distributed/DistributedFileSS/lib/" # ImGui 头文件路径
+    "E:/Project/Distributed/DistributedFileSS/src" # 项目源文件头文件路径
+)
+
+# set(GLFW3_DIR "lib/glfw/lib/" CACHE PATH "glfw3 directory")
+# # 查找 GLFW3 包
+# find_package(glfw3 REQUIRED)
+
+# 查找 OpenGL 包
+find_package(OpenGL REQUIRED)
+
+# 链接 GLFW3 库
+target_link_libraries(DFSS PRIVATE glfw)
+
+# 链接 OpenGL 库
+target_link_libraries(DFSS PRIVATE ${OPENGL_gl_LIBRARY})
+# 链接其他可能需要的库
+target_link_libraries(DFSS PRIVATE gdi32)
