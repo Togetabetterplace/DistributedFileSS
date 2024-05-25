@@ -5,11 +5,12 @@
 #include <string>
 #include <filesystem>
 namespace fs = std::filesystem;
+
 /**
  * Constructor for the Peer class.
- * Initializes the server socket, binds it to the specified port, and starts the server loop in a separate thread.
+ * Initializes the server socket, sets the port, and starts the server loop in a separate thread.
  *
- * @param port The port number to bind the server socket to.
+ * @param port The port number for the server socket.
  */
 Peer::Peer(int port) : pool(4)
 {
@@ -50,18 +51,39 @@ Peer::~Peer()
     WSACleanup();
 }
 
+/**
+ * Sets the path for the peer to save downloaded data sources.
+ *
+ * @param path The path to save downloaded data sources.
+ *
+ * @return An integer indicating the success of the operation.
+ *         Returns 0 if the path is empty.
+ *         Returns -1 if the path does not exist.
+ *         Returns 1 if the path is valid and set successfully.
+ *
+ * @note This function does not check if the path is writable.
+ *       It is the caller's responsibility to ensure that the path is writable.
+ *
+ * @warning This function does not handle any errors that may occur during the path validation.
+ *          It is the caller's responsibility to handle any exceptions or errors that may arise.
+ *
+ * @see PATH
+ */
 int Peer::setPeerPath(const std::string &path)
 {
-    // 判定路径是否合法
+    // Check if the path is empty
     if (path.empty())
     {
         return 0;
-        
-    }// 判定路径是否存在
+    }
+
+    // Check if the path exists
     else if (!fs::exists(path))
     {
         return -1;
     }
+
+    // If the path is valid, set it
     else
     {
         PATH = path;
@@ -295,6 +317,9 @@ void Peer::handleClientConnection(SOCKET clientSocket)
             // 构建文件路径
             // std::string filePath = "E:/Project/Distributed/DistributedFileSS/file/test_dource_file/" + path;
             std::string filePath = path;
+            // 查看文件后缀名
+            std::string suffix = path.substr(path.find_last_of(".") + 1);
+
             // E:\Project\Distributed\DistributedFileSS\file\img
             //  打开文件，以二进制模式读取
             std::ifstream file(filePath, std::ios::binary);
@@ -307,12 +332,18 @@ void Peer::handleClientConnection(SOCKET clientSocket)
 
                 // 关闭文件
                 file.close();
-
                 // 创建响应头
                 std::ostringstream oss;
-                oss << "HTTP/1.1 200 OK\r\n"
-                    << "Content-Length: " << fileBuffer.size() << "\r\n"
-                    << "\r\n";
+               
+                if (suffix != "png" && suffix != "jpg" && suffix != "jpeg" && suffix != "gif" 
+                && suffix != "bmp" && suffix != "ico" && suffix != "mp4" && suffix != "mp3" 
+                && suffix != "flac" && suffix != "mkv" && suffix != "svg")
+                {
+                    //不是二进制文件则添加响应头，否则不添加
+                    oss << "HTTP/1.1 200 OK\r\n"
+                        << "Content-Length: " << fileBuffer.size() << "\r\n"
+                        << "\r\n";
+                }
 
                 // 发送响应头到客户端
                 send(clientSocket, oss.str().c_str(), oss.str().size(), 0);

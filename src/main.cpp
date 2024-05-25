@@ -17,6 +17,12 @@ glfw_error_callback(int error, const char *description)
     fprintf(stderr, "Glfw Error %d: %s\n", error, description);
 }
 
+/**
+ * Function to display the menu and handle user interactions.
+ *
+ * @param peer Reference to the peer object.
+ * @param log Reference to the log string.
+ */
 void displayMenu(Peer &peer, std::string &log)
 {
     ImGui::Text("Distributed File Synchronization and Storage System");
@@ -25,8 +31,9 @@ void displayMenu(Peer &peer, std::string &log)
     static bool add_peer_popup = false;
     static bool add_data_source_popup = false;
     static bool set_sync_period_popup = false;
-    static bool set_peer_Path = false;
+    static bool set_peer_path_popup = false;
 
+    // Buttons to open popups
     if (ImGui::Button("Add Peer"))
     {
         add_peer_popup = true;
@@ -52,7 +59,7 @@ void displayMenu(Peer &peer, std::string &log)
     }
     if (ImGui::Button("Set Peer Path"))
     {
-        set_peer_Path = true;
+        set_peer_path_popup = true;
     }
     if (ImGui::Button("Exit"))
     {
@@ -75,12 +82,13 @@ void displayMenu(Peer &peer, std::string &log)
         ImGui::OpenPopup("Set Sync Period");
         set_sync_period_popup = false;
     }
-    if (set_peer_Path)
+    if (set_peer_path_popup)
     {
         ImGui::OpenPopup("Set Peer Path");
-        set_peer_Path = false;
+        set_peer_path_popup = false;
     }
 
+    // Add Peer popup
     if (ImGui::BeginPopupModal("Add Peer", NULL, ImGuiWindowFlags_AlwaysAutoResize))
     {
         static char peerAddress[128] = "";
@@ -107,6 +115,7 @@ void displayMenu(Peer &peer, std::string &log)
         ImGui::EndPopup();
     }
 
+    // Add Data Source popup
     if (ImGui::BeginPopupModal("Add Data Source", NULL, ImGuiWindowFlags_AlwaysAutoResize))
     {
         static char name[128] = "", path[128] = "", hash[128] = "";
@@ -135,6 +144,7 @@ void displayMenu(Peer &peer, std::string &log)
         ImGui::EndPopup();
     }
 
+    // Set Sync Period popup
     if (ImGui::BeginPopupModal("Set Sync Period", NULL, ImGuiWindowFlags_AlwaysAutoResize))
     {
         static int period = 0;
@@ -156,6 +166,8 @@ void displayMenu(Peer &peer, std::string &log)
         }
         ImGui::EndPopup();
     }
+
+    // Set Peer Path popup
     if (ImGui::BeginPopupModal("Set Peer Path", NULL, ImGuiWindowFlags_AlwaysAutoResize))
     {
         static char path[128] = "";
