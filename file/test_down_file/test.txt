@@ -1,5 +1,5 @@
 HTTP/1.1 200 OK
-Content-Length: 176
+Content-Length: 240
 
 #include<iostream>
 using namespace std;
@@ -10,5 +10,9 @@ int main(){
 	cin>>c;
 	cout<<a+b+c<<endl;
 	cout<<"flie???"<<endl;	//endlÇÃ´íÁË£¡£¡£¡
+	for(int i = 0;i<=1;i++){
+		cout<<"*"<<endl;
+	}
+	//really??
 	return 0;
 }
