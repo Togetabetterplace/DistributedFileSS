@@ -1,61 +1,3 @@
-// {
-//     "version": "2.0.0",
-//     "tasks": [
-//         { //E:\Project\Distributed\DistributedFileSS\src
-//             "label": "build",
-//             "type": "shell",
-//             "command": "g++",
-//             "args": [
-//                 "-I",
-//                 "E:/Project/Distributed/DistributedFileSS/lib",
-//                 "-lglfw",
-//                 "-lGL",
-//                 "-ldl",
-//                 "-lpthread",
-//                 "-lws2_32",
-//                 "E:/Project/Distributed/DistributedFileSS/src/main.cpp",
-//                 "E:/Project/Distributed/DistributedFileSS/src/Peer.cpp",
-//                 "E:/Project/Distributed/DistributedFileSS/src/ThreadPool.cpp",
-//                 "E:/Project/Distributed/DistributedFileSS/lib/imgui.cpp",
-//                 "E:/Project/Distributed/DistributedFileSS/lib/imgui_demo.cpp",
-//                 "E:/Project/Distributed/DistributedFileSS/lib/imgui_draw.cpp",
-//                 "E:/Project/Distributed/DistributedFileSS/lib/imgui_tables.cpp",
-//                 "E:/Project/Distributed/DistributedFileSS/lib/imgui_widgets.cpp",
-//                 "E:/Project/Distributed/DistributedFileSS/lib/imgui_impl_glfw.cpp",
-//                 "E:/Project/Distributed/DistributedFileSS/lib/imgui_impl_opengl3.cpp",
-//                 "-g",
-//                 "${file}",
-//                 "${fileDirname}/lib/glfw/lib/libglfw3.a", //链接至glfw库
-//                 "-lopengl32", //链接系统中的opengl32库
-//                 "-lgdi32", //链接系统中的gdi32库
-//                 "-o",
-//                 "E:/Project/Distributed/DistributedFileSS/DistributedProject.exe",
-//                 "--include-directory=${fileDirname}/lib/glfw/include", //确保头文件的包含
-//                 //使用WinSocket
-//                 "-lwsock32"
-//             ],
-//             "group": "build",
-//             "problemMatcher": [
-//                 "$gcc"
-//             ]
-//         }
-//     ]
-// }
-
-
-// //             "args": [
-// //     "-fdiagnostics-color=always",
-// //     "-g",
-// //     "${file}",
-// //     "${fileDirname}/depends/libglfw3.a", //链接至glfw库
-// //     "-lopengl32", //链接系统中的opengl32库
-// //     "-lgdi32", //链接系统中的gdi32库
-// //     "-o",
-// //     "${fileDirname}\\${fileBasenameNoExtension}.exe",
-// //     "--include-directory=${fileDirname}/depends/include" //确保头文件的包含
-// // ],
-
-
 {
     "version": "2.0.0",
     "tasks": [
@@ -71,10 +13,7 @@
                 "--target",
                 "all"
             ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
+            "group": "build",
             "problemMatcher": [
                 "$gcc"
             ]

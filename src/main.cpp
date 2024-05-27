@@ -10,6 +10,8 @@
 #include "GLFW/glfw3.h"
 #include "timer.h"
 
+static int flag;
+Timer timer;
 static void
 glfw_error_callback(int error, const char *description)
 {
@@ -22,7 +24,7 @@ glfw_error_callback(int error, const char *description)
  * @param peer Reference to the peer object.
  * @param log Reference to the log string.
  */
-void displayMenu(Peer &peer, std::string &log, int flag)
+void displayMenu(Peer &peer, std::string &log)
 {
     ImGui::Text("Distributed File Synchronization and Storage System");
     ImGui::Separator();
@@ -164,6 +166,21 @@ void displayMenu(Peer &peer, std::string &log, int flag)
         {
             peer.setSyncPeriod(static_cast<SyncPeriod>(period));
             log += "Set sync period to " + std::to_string(period) + "\n";
+            timer.stop();
+            flag = 0;
+            if (peer.Pgetter() == HOURLY)
+            {
+                timer.start(60000, std::bind(&Peer::syncDataSources, &peer));
+            }
+            else if (peer.Pgetter() == DAILY)
+            {
+                timer.start(86400000, std::bind(&Peer::syncDataSources, &peer));
+            }
+            else
+            {
+                // timer.start(1000,std::bind(&Peer::syncDataSources, &peer));
+                flag = 1;
+            }
             if (flag) // todo：实现随时同步
             {
                 peer.syncDataSources();
@@ -242,9 +259,8 @@ int main(int, char **)
 
     Peer peer(8080);
     std::string log;
-    int flag = 0;
+    flag = 0;
 
-    Timer timer;
     if (peer.Pgetter() == HOURLY)
     {
         timer.start(60000, std::bind(&Peer::syncDataSources, &peer));
@@ -272,7 +288,7 @@ int main(int, char **)
         ImGui::SetNextWindowPos(ImVec2(0, 0));
         ImGui::SetNextWindowSize(ImVec2(400, 720));
         ImGui::Begin("Control Panel", NULL, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove);
-        displayMenu(peer, log, flag);
+        displayMenu(peer, log);
         ImGui::End();
 
         ImGui::SetNextWindowPos(ImVec2(400, 0));
