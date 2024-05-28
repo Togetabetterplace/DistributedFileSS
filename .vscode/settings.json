@@ -58,7 +58,11 @@
         "C_Cpp.default.cppStandard": "c++17",
         "cstring": "cpp",
         "sstream": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "codecvt": "cpp",
+        "future": "cpp",
+        "iomanip": "cpp",
+        "cinttypes": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled",
     "cmake.sourceDirectory": "E:/Project/Distributed/DistributedFileSS"
