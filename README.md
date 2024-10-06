@@ -1,284 +1,79 @@
 ### DFSS
 
-
 Distributed systems course design in the second semester of the third year, distributed file sharing and synchronization systems
 
-File structure：
-- distributedFileSS
+本项目为解决跨服务器文件同步的问题而开发，主要功能为：
 
-├── .vscode/
+- 使用P2P架构实现文件共享与同步
+- 使用Raft算法实现文件同步的一致性
+- 使用imgui和glfw实现图像化界面
+- 使用定时器实现定时同步
+- 使用HTTP协议，WinSocket进行文件传输
 
-│   └── c_cpp_properties.json
+#### 项目设计
 
-│   └── launch.json
+系统本身使用p2p架构，每个节点都维护一个文件存储空间，同时存储了本节点已知的其他节点和数据源。用户可通过可视化界面对系统进行操作，主要功能有：
 
-│   └── settings.json
+- 添加数据源
+- 添加节点
+- 设置本节点文件存储路径
+- 展示当前节点信息
+- 设定同步实践
+- 手动同步
+- 退出
 
-│   └── tasks.json
+#### 运行效果
 
-├── build/
+系统界面
+![image](https://github.com/user-attachments/assets/f25a9da1-0b0e-4949-b567-f80b1138b853)
 
-│   ├── .cmake/
+添加节点
+- 输入IP和端口号
+- 点击add
+![image](https://github.com/user-attachments/assets/cab516a1-3882-4c0c-a66f-29e107acb57e)
 
-│   │   ├── api/
+添加数据源
+- 输入数据源文件名
+- 输入数据源路径
+- 输入哈希值
+- 点击添加
 
-│   │   │   ├── v1/
+![image](https://github.com/user-attachments/assets/e5316868-fe38-48a1-9347-269dc38903fd)
 
-│   │   │   │   ├── query/
+设定同步时间
+- 可设定按随时同步，分钟同步，按天同步等
 
-│   │   │   │   │   ├── client-vscode/
+![image](https://github.com/user-attachments/assets/8368211b-a1f8-4381-bdd5-f59b74402ef2)
 
-│   │   │   │   │   │   └── query.json
+点击查看当前节点信息
+![image](https://github.com/user-attachments/assets/1a96cc10-7a10-4169-8852-3dfeff99ff1e)
 
-│   │   │   │   ├── reply/
 
-│   │   │   │   │   └── cache-v2-f584b58ee08efc8eb378.json
+设置本节点存储路径
+![image](https://github.com/user-attachments/assets/e85611b5-6644-4f17-bd26-ea1eff8d2e6f)
 
-│   │   │   │   │   └── cmakeFiles-v1-6743e5907639a18ed5a2.json
+#### 测试
 
-│   │   │   │   │   └── codemodel-v2-8e6c1f3b241872cf0c1b.json
+测试文件夹结构
 
-│   │   │   │   │   └── directory-.-Debug-d0094a50bb2071803777.json
+![image](https://github.com/user-attachments/assets/fd6537be-7a79-4b17-afe6-cd05036cb740)
 
-│   │   │   │   │   └── index-2024-05-25T05-50-26-0736.json
 
-│   │   │   │   │   └── target-DFSS-Debug-040f6c24d5939000d56b.json
+待同步文件
 
-│   │   │   │   │   └── toolchains-v1-3a5489f92a382d3236cf.json
+![image](https://github.com/user-attachments/assets/f51f2e5f-34ef-457e-8359-2b423cd769f6)
 
-│   └── CMakeCache.txt
 
-│   ├── CMakeFiles/
+同步文件结果
 
-│   │   ├── 3.25.1-msvc1/
+![image](https://github.com/user-attachments/assets/4010d4e6-8029-4e70-8fe2-d6f5c45e38e5)
 
-│   │   │   └── CMakeCCompiler.cmake
 
-│   │   │   └── CMakeCXXCompiler.cmake
+ps：视频音频图片等文件也可以进行传输和同步，在进行文件传输时，对于文本文件会添加HTTP相应头，如果是非结构化的文件则不添加
 
-│   │   │   └── CMakeDetermineCompilerABI_C.bin
 
-│   │   │   └── CMakeDetermineCompilerABI_CXX.bin
 
-│   │   │   └── CMakeRCCompiler.cmake
 
-│   │   │   └── CMakeSystem.cmake
 
-
-│   │   │   ├── CompilerIdC/
-
-
-│   │   │   │   └── a.exe
-
-│   │   │   │   └── CMakeCCompilerId.c
-
-│   │   │   │   ├── tmp/
-
-│   │   │   ├── CompilerIdCXX/
-
-│   │   │   │   └── a.exe
-
-│   │   │   │   └── CMakeCXXCompilerId.cpp
-
-│   │   │   │   ├── tmp/
-
-
-│   │   └── cmake.check_cache
-
-│   │   └── CMakeDirectoryInformation.cmake
-
-
-│   │   └── CMakeOutput.log
-
-│   │   ├── DFSS.dir/
-
-│   │   │   └── build.make
-
-│   │   │   └── cmake_clean.cmake
-
-│   │   │   └── compiler_depend.internal
-
-│   │   │   └── compiler_depend.make
-
-│   │   │   └── compiler_depend.ts
-
-│   │   │   └── depend.make
-
-│   │   │   └── DependInfo.cmake
-
-│   │   │   └── flags.make
-
-│   │   │   └── includes_CXX.rsp
-
-│   │   │   └── link.txt
-
-│   │   │   └── linkLibs.rsp
-
-│   │   │   └── objects.a
-
-│   │   │   └── objects1
-
-│   │   │   └── progress.make
-
-│   │   │   ├── src/
-
-│   │   │   │   └── imgui.cpp.obj
-
-│   │   │   │   └── imgui.cpp.obj.d
-
-│   │   │   │   └── imgui_demo.cpp.obj
-
-
-│   │   │   │   └── imgui_demo.cpp.obj.d
-
-│   │   │   │   └── imgui_draw.cpp.obj
-
-
-│   │   │   │   └── imgui_draw.cpp.obj.d
-
-│   │   │   │   └── imgui_impl_glfw.cpp.obj
-
-│   │   │   │   └── imgui_impl_glfw.cpp.obj.d
-
-│   │   │   │   └── imgui_impl_opengl3.cpp.obj
-
-│   │   │   │   └── imgui_impl_opengl3.cpp.obj.d
-
-│   │   │   │   └── imgui_tables.cpp.obj
-│   │   │   │   └── imgui_tables.cpp.obj.d
-
-│   │   │   │   └── imgui_widgets.cpp.obj
-
-│   │   │   │   └── imgui_widgets.cpp.obj.d
-
-│   │   │   │   └── main.cpp.obj
-
-│   │   │   │   └── main.cpp.obj.d
-
-
-│   │   │   │   └── Peer.cpp.obj
-
-│   │   │   │   └── Peer.cpp.obj.d
-
-│   │   │   │   └── threadPool.cpp.obj
-
-│   │   │   │   └── threadPool.cpp.obj.d
-
-│   │   └── Makefile.cmake
-
-│   │   └── Makefile2
-
-│   │   ├── pkgRedirects/
-
-│   │   └── progress.marks
-
-│   │   └── TargetDirectories.txt
-
-│   └── cmake_install.cmake
-
-│   └── compile_commands.json
-
-│   └── DFSS.exe
-
-│   └── imgui.ini
-
-│   └── Makefile
-
-└── CMakeLists.txt
-
-├── file/
-
-
-│   ├── test_down_file/
-
-│   │   └── test.txt
-
-│   ├── test_source_file/
-
-│   │   └── test.txt
-
-│   │   └── test_img.png
-
-
-└── imgui.ini
-
-├── lib/
-
-│   └── DataSource.h
-
-│   ├── glfw/
-
-│   │   ├── include/
-
-│   │   │   ├── GLFW/
-
-│   │   │   │   └── glfw3.h
-
-│   │   │   │   └── glfw3native.h
-
-│   │   ├── lib/
-
-│   │   │   └── glfw3.dll
-
-
-│   │   │   └── libglfw3.a
-
-│   │   │   └── libglfw3dll.a
-
-│   │   │   └── opengl32.dll
-
-│   └── imconfig.h
-
-
-│   └── imgui.h
-
-│   └── imgui_impl_glfw.h
-
-│   └── imgui_impl_opengl3.h
-
-│   └── imgui_impl_opengl3_loader.h
-
-│   └── imgui_internal.h
-
-│   └── imstb_rectpack.h
-
-
-│   └── imstb_textedit.h
-
-│   └── imstb_truetype.h
-
-│   └── Peer.h
-
-│   └── threadPool.h
-
-└── README.md
-
-
-├── src/
-
-│   └── imgui.cpp
-
-
-│   └── imgui_demo.cpp
-
-│   └── imgui_draw.cpp
-
-│   └── imgui_impl_glfw.cpp
-
-
-│   └── imgui_impl_opengl3.cpp
-
-│   └── imgui_tables.cpp
-
-│   └── imgui_widgets.cpp
-
-
-│   └── main.cpp
-
-│   └── Peer.cpp
-
-│   └── threadPool.cpp
-
-└── test.py
 
 
